@@ -1,9 +1,5 @@
-import { NotreHistoire } from "@/components/notre-histoire";
+import { NorestSite } from "@/components/norest-site";
 
 export default function Home() {
-  return (
-    <main className="flex flex-1 flex-col">
-      <NotreHistoire />
-    </main>
-  );
+  return <NorestSite />;
 }

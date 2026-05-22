@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import {
+  Geist,
+  Instrument_Serif,
+} from "next/font/google";
+import { Anton, Manrope, Caveat, Bodoni_Moda } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +18,32 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: "700",
+});
+
+const bodoniModa = Bodoni_Moda({
+  variable: "--font-bodoni-moda",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
-  title: "NOREST — Notre histoire",
+  title: "NOREST",
   description:
     "Paris Est, vingtième arrondissement. Deux gamins, deux trajectoires, la même faim. L'histoire de NOREST.",
 };
@@ -28,11 +56,12 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${instrumentSerif.variable} ${anton.variable} ${manrope.variable} ${caveat.variable} ${bodoniModa.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-stone-950 text-stone-100">
-        {children}
-      </body>
+      <head>
+        <meta name="theme-color" content="#1a1410" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
